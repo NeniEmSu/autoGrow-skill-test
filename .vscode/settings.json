@@ -1,6 +1,11 @@
 {
   "cSpell.words": [
-    "crossorigin"
+    "autogrow",
+    "checkmark",
+    "crossorigin",
+    "scrollbar",
+    "truetype",
+    "webfont"
   ],
   "compile-hero.disable-compile-files-on-did-save-code": false
 }

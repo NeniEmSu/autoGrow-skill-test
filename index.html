@@ -1,14 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Auto Grow FED Skill Test</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/main.css">
   <script src="index.js" defer module></script>
 </head>
+
 <body>
-  <h1>Auto Grow FED Skill Test.</h1>
+  <header role="navigation">
+    <nav class="main-nav">
+      <div class="main-nav_autogrow">
+        <div class="dropdown-toggle main-nav__autogrow-dropdown" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="main-nav__autogrow-logo"></span>
+          <span class="main-nav__autogrow-text">AutoGrow</span>
+          <div class="dropdown"></div>
+        </div>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+      </div>
+
+      <div class="main-nav__toggle">
+        <label for="ideas" class="main-nav__toggle-form-check">Ideas
+          <input type="checkbox" name="ideas" id="ideas">
+          <span class="checkmark"></span>
+        </label>
+
+        <label for="made" class="main-nav__toggle-form-check">Made
+          <input type="checkbox" name="made" id="made">
+          <span class="checkmark"></span>
+        </label>
+
+        <label for="real" class="main-nav__toggle-form-check">Real
+          <input type="checkbox" name="real" id="real">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+
+      <div class="main-nav__tools">
+        <span class="main-nav__tools-text">Tools</span>
+        <svg class="main-nav__tools-icon" width="52" height="52" viewBox="0 0 52 52" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="26" fill="#C4C4C4" />
+          <circle cx="26" cy="26" r="19" fill="black" />
+          <path
+            d="M23 36C24.8037 36 26.5705 36 28.3742 36C27.4908 37.546 26.6074 39.0736 25.6871 40.638C24.7853 39.0736 23.9018 37.546 23 36Z"
+            fill="white" />
+          <path
+            d="M28.3743 16.6381C26.5706 16.6381 24.8037 16.6381 23 16.6381C23.8835 15.092 24.7669 13.5644 25.6872 12C26.589 13.5644 27.4724 15.092 28.3743 16.6381Z"
+            fill="white" />
+          <path
+            d="M16.6381 23C16.6381 24.8037 16.6381 26.5705 16.6381 28.3742C15.092 27.4908 13.5644 26.6074 12 25.6871C13.5644 24.7853 15.092 23.9018 16.6381 23Z"
+            fill="white" />
+          <path
+            d="M35 28.3743C35 26.5706 35 24.8037 35 23C36.546 23.8835 38.0736 24.7669 39.638 25.6872C38.0736 26.589 36.546 27.4724 35 28.3743Z"
+            fill="white" />
+        </svg>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+  <main class="container">
+    <div class="search-add__field text-center">
+      <input type="search" name="search" id="search" class="search-add__field-input"
+        placeholder="search or enter new ideas" aria-label="Search">
+      <button class="search-add__field-btn" type="submit"><span class="d-none d-sm-inline">Create</span> <img
+          src="images/plus.svg" alt="Make icon" width="20" height="20" class="d-inline d-sm-none"> </button>
+    </div>
+
+    <section class="ideas">
+      <article class="card-block">
+        <div class="card-block__body">
+          <p class="card-block__body-text">It is a long established fact that a reader will be distracted by the
+            readable
+          </p>
+          <div class="collapsible-menu d-flex d-sm-none">
+            <button class="collapsible-menu-icon">
+              <img src="images/dot-menu.svg" alt="Make icon" width="20" height="20" class="collapsible-menu-icon-img">
+            </button>
+          </div>
+          <div class="card-block__body-icons d-none d-sm-flex">
+            <button class="card-block__body-icon">
+              <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+            </button>
+            <button class="card-block__body-icon">
+              <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+            </button>
+            <button class="card-block__body-icon">
+              <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+            </button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="made">
+      <article class="card-block open">
+        <div class="card-block__body">
+          <p class="card-block__body-text">It is a long established fact that a reader will be distracted by the
+            readable</p>
+          <div class="card-block__body-icons">
+            <button class="card-block__body-icon">
+              <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+            </button>
+            <button class="card-block__body-icon">
+              <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+            </button>
+            <button class="card-block__body-icon">
+              <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+            </button>
+          </div>
+        </div>
+        <div class="card-block__panel">
+          <button class="add">Add notes</button>
+          <button class="delete">Delete Idea</button>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="real">
+      <article class="card-block">
+        <div class="card-block__body">
+          <p class="card-block__body-text">It is a long established fact that a reader will be distracted by the
+            readable
+          </p>
+          <div class="collapsible-menu d-flex d-sm-none">
+            <button class="card-block__body-icon">
+              <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+            </button>
+          </div>
+          <div class="card-block__body-icons d-none d-sm-flex">
+            <button class="card-block__body-icon">
+              <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+            </button>
+            <button class="card-block__body-icon">
+              <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+            </button>
+            <button class="card-block__body-icon">
+              <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+            </button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+  </script>
 </body>
+
 </html>
