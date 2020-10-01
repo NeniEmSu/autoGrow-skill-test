@@ -12,7 +12,7 @@
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/main.css">
-  <script src="index.js" defer module></script>
+  <script src="index.js" defer></script>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         <div class="dropdown-toggle main-nav__autogrow-dropdown" type="button" id="dropdownMenuButton"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="main-nav__autogrow-logo"></span>
-          <span class="main-nav__autogrow-text">AutoGrow</span>
+          <h1 class="main-nav__autogrow-text">AutoGrow</h1>
           <div class="dropdown"></div>
         </div>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -50,7 +50,7 @@
         </label>
       </div>
 
-      <div class="main-nav__tools">
+      <button role="button" class="main-nav__tools" onclick="toggleSidebar()" name="openSidebar">
         <span class="main-nav__tools-text">Tools</span>
         <svg class="main-nav__tools-icon" width="52" height="52" viewBox="0 0 52 52" fill="none"
           xmlns="http://www.w3.org/2000/svg">
@@ -69,6 +69,70 @@
             d="M35 28.3743C35 26.5706 35 24.8037 35 23C36.546 23.8835 38.0736 24.7669 39.638 25.6872C38.0736 26.589 36.546 27.4724 35 28.3743Z"
             fill="white" />
         </svg>
+      </button>
+
+      <div id="sidebar" class="sidebar" class="closed">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">
+          <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+        </a>
+        <article class="sidebar__card-group">
+          <div class="sidebar__card-item">
+            <img src="/images/img.svg" alt="62" sizes="62">
+            <font>Ideas Feed</font>
+          </div>
+          <div class="sidebar__card-item">
+            <img src="/images/img.svg" alt="62" sizes="62">
+            <font>Ideas Library</font>
+          </div>
+          <div class="sidebar__card-item">
+            <img src="/images/img.svg" alt="62" sizes="62">
+            <font>Marketplace</font>
+          </div>
+          <div class="sidebar__card-item">
+            <img src="/images/img.svg" alt="62" sizes="62">
+            <font>My Tasks</font>
+          </div>
+          <div class="sidebar__card-item">
+            <img src="/images/img.svg" alt="62" sizes="62">
+            <font>My Team</font>
+          </div>
+          <div class="sidebar__card-item">
+            <img src="/images/img.svg" alt="62" sizes="62">
+            <font>Emails</font>
+          </div>
+        </article>
+
+        <article class="sidebar__amin-block">
+          <h2>Admin</h2>
+          <div class="sidebar__card-group">
+            <div class="sidebar__card-item">
+              <img src="/images/img.svg" alt="62" sizes="62">
+              <font>Users</font>
+            </div>
+            <div class="sidebar__card-item">
+              <img src="/images/img.svg" alt="62" sizes="62">
+              <font>Businesses</font>
+            </div>
+            <div class="sidebar__card-item">
+              <img src="/images/img.svg" alt="62" sizes="62">
+              <font>Stats</font>
+            </div>
+          </div>
+        </article>
+
+        <article class="sidebar__amin-block">
+          <h2>Trainings</h2>
+          <div class="sidebar__card-group">
+            <div class="sidebar__card-item">
+              <img src="/images/img.svg" alt="62" sizes="62">
+              <font>Conversion Pack</font>
+            </div>
+            <div class="sidebar__card-item">
+              <img src="/images/img.svg" alt="62" sizes="62">
+              <font>Diagram Pack</font>
+            </div>
+          </div>
+        </article>
 
       </div>
 
@@ -84,82 +148,116 @@
           src="images/plus.svg" alt="Make icon" width="20" height="20" class="d-inline d-sm-none"> </button>
     </div>
 
-    <section class="ideas">
-      <article class="card-block">
-        <div class="card-block__body">
-          <p class="card-block__body-text">It is a long established fact that a reader will be distracted by the
-            readable
-          </p>
-          <div class="collapsible-menu d-flex d-sm-none">
-            <button class="collapsible-menu-icon">
-              <img src="images/dot-menu.svg" alt="Make icon" width="20" height="20" class="collapsible-menu-icon-img">
-            </button>
-          </div>
-          <div class="card-block__body-icons d-none d-sm-flex">
-            <button class="card-block__body-icon">
-              <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
-            </button>
-            <button class="card-block__body-icon">
-              <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
-            </button>
-            <button class="card-block__body-icon">
-              <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
-            </button>
-          </div>
+    <article class="card-block">
+      <div class="card-block__body">
+        <p class="card-block__body-text">It is a long established fact that a reader will be distracted by the
+          readable
+        </p>
+        <div class="collapsible-menu d-flex d-sm-none">
+          <button class="collapsible-menu-icon">
+            <img src="images/dot-menu.svg" alt="Make icon" width="20" height="20" class="collapsible-menu-icon-img">
+          </button>
         </div>
-      </article>
-    </section>
+        <div class="card-block__body-icons d-none d-sm-flex">
+          <button class="card-block__body-icon">
+            <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+          <button class="card-block__body-icon">
+            <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+          <button class="card-block__body-icon">
+            <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+        </div>
+      </div>
+    </article>
 
-    <section class="made">
-      <article class="card-block open">
-        <div class="card-block__body">
-          <p class="card-block__body-text">It is a long established fact that a reader will be distracted by the
-            readable</p>
-          <div class="card-block__body-icons">
-            <button class="card-block__body-icon">
-              <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
-            </button>
-            <button class="card-block__body-icon">
-              <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
-            </button>
-            <button class="card-block__body-icon">
-              <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
-            </button>
-          </div>
+    <article class="card-block in-progress">
+      <div class="card-block__head">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0"
+            aria-valuemax="100">10%</div>
         </div>
-        <div class="card-block__panel">
-          <button class="add">Add notes</button>
-          <button class="delete">Delete Idea</button>
+      </div>
+      <div class="card-block__body">
+        <p class="card-block__body-text">It is a long established fact that a reader will be distracted by the
+          readable
+        </p>
+        <div class="collapsible-menu d-flex d-sm-none">
+          <button class="collapsible-menu-icon">
+            <img src="images/dot-menu.svg" alt="Make icon" width="20" height="20" class="collapsible-menu-icon-img">
+          </button>
         </div>
-      </article>
+        <div class="card-block__body-icons d-none d-sm-flex">
+          <button class="card-block__body-icon">
+            <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+          <button class="card-block__body-icon">
+            <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+          <button class="card-block__body-icon">
+            <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+        </div>
+      </div>
+    </article>
 
-    </section>
-
-    <section class="real">
-      <article class="card-block">
-        <div class="card-block__body">
-          <p class="card-block__body-text">It is a long established fact that a reader will be distracted by the
-            readable
-          </p>
-          <div class="collapsible-menu d-flex d-sm-none">
-            <button class="card-block__body-icon">
-              <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
-            </button>
-          </div>
-          <div class="card-block__body-icons d-none d-sm-flex">
-            <button class="card-block__body-icon">
-              <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
-            </button>
-            <button class="card-block__body-icon">
-              <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
-            </button>
-            <button class="card-block__body-icon">
-              <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
-            </button>
-          </div>
+    <article class="card-block in-progress open">
+      <div class="card-block__head">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0"
+            aria-valuemax="100">10%</div>
         </div>
-      </article>
-    </section>
+      </div>
+      <div class="card-block__body">
+        <p class="card-block__body-text">It is a long established fact that a reader will be distracted by the
+          readable</p>
+        <div class="collapsible-menu d-flex d-sm-none">
+          <button class="collapsible-menu-icon">
+            <img src="images/dot-menu.svg" alt="Make icon" width="20" height="20" class="collapsible-menu-icon-img">
+          </button>
+        </div>
+        <div class="card-block__body-icons d-none d-sm-flex">
+          <button class="card-block__body-icon">
+            <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+          <button class="card-block__body-icon">
+            <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+          <button class="card-block__body-icon">
+            <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+        </div>
+      </div>
+      <div class="card-block__panel">
+        <button class="add">Add notes</button>
+        <button class="delete">Delete Idea</button>
+      </div>
+    </article>
+
+    <article class="card-block">
+      <div class="card-block__body">
+        <p class="card-block__body-text">It is a long established fact that a reader will be distracted by the
+          readable
+        </p>
+        <div class="collapsible-menu d-flex d-sm-none">
+          <button class="collapsible-menu-icon">
+            <img src="images/dot-menu.svg" alt="Make icon" width="20" height="20" class="collapsible-menu-icon-img">
+          </button>
+        </div>
+        <div class="card-block__body-icons d-none d-sm-flex">
+          <button class="card-block__body-icon">
+            <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+          <button class="card-block__body-icon">
+            <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+          <button class="card-block__body-icon">
+            <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+          </button>
+        </div>
+      </div>
+    </article>
 
   </main>
 
