@@ -89,6 +89,11 @@ function displayContent() {
     </div>
     `
     main.appendChild(cardEl);
+
+    // add event listener to toggle panel
+    cardEl.addEventListener('click', () => {
+      cardEl.classList.toggle('open')
+    })
   });
 }
 
@@ -179,10 +184,3 @@ addForm.addEventListener('submit', (event) => {
   inputField.value = ''
   displayContent()
 })
-
-
-// function toggleCardPanel() {
-//   cardBlock.addEventListener('click', (event) => {
-
-//   })
-// }
