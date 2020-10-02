@@ -18,7 +18,6 @@ $(document).ready(function () {
     $(this).parent().addClass("label-animate");
   });
 
-  displayContent();
 
 });
 
@@ -32,6 +31,7 @@ $(window).click(function (event) {
   }
 });
 
+displayContent();
 
 function displayContent() {
   // clear main to reset for adding new element
@@ -50,6 +50,7 @@ function displayContent() {
           aria-valuemax="100">${element.progress}%</div>
       </div>
     </div>
+    <div class='complete'><span class="tick"></span></div>
     <div class="card-block__body">
       <p class="card-block__body-text project-name">${element['project-name']}</p>
       <div class="collapsible-menu d-flex d-sm-none">
@@ -70,7 +71,7 @@ function displayContent() {
       </div>
     </div>
     <div class="card-block__panel">
-      <div class="row">
+      <form class="row">
         <div class="col-md-6">
           <div class="form-group">
             <label for="name-${element.id}">Project name</label>
@@ -82,8 +83,7 @@ function displayContent() {
             <textarea name="notes" id="notes-${element.id}" class="form-control"></textarea>
           </div>
         </div>
-      </div>
-
+      </form>
       <button class="save">Save</button>
       <button class="delete">Delete Idea</button>
     </div>
