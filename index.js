@@ -87,10 +87,13 @@ function displayContent() {
           </div>
         </div>
       </form>
-      <button id="add-notes-${element.id}" class="add">Add notes</button>
-      <button id="edit-notes-${element.id}" class="edit d-none">Edit notes</button>
-      <button id="save-notes-${element.id}" class="save d-none">Save</button>
-      <button id="delete-notes-${element.id}" class="delete">Delete Idea</button>
+      <div class="${element['project-notes'] === '' ? 'd-none' : ''}">
+        <p>${element['project-notes']}</p>
+      </div>
+      <button name='add-notes' id="add-notes-${element.id}" class="add ${element['project-notes'] === '' ? '' : 'd-none'}">Add notes</button>
+      <button name='edit-notes' id="edit-notes-${element.id}" class="edit ${element['project-notes'] === '' ? 'd-none' : ''}">Edit notes</button>
+      <button name='save-notes' type="submit" id="save-notes-${element.id}" class="save d-none">Save</button>
+      <button name='delete-notes' id="delete-notes-${element.id}" class="delete">Delete Idea</button>
     </div>
     `
     main.appendChild(cardEl);
@@ -104,6 +107,22 @@ function displayContent() {
     const chatBtn = cardBody.childNodes[5].childNodes[3];
     const deleteBtn = cardBody.childNodes[5].childNodes[5];
 
+    const form = cardEl.childNodes[7].childNodes[1]
+    const addBtn = cardEl.childNodes[7].childNodes[5];
+    const saveBtn = cardEl.childNodes[7].childNodes[9]
+    const deleteBtnInner = cardEl.childNodes[7].childNodes[11]
+
+    addBtn.addEventListener('click', () => {
+      form.classList.remove('d-none')
+      saveBtn.classList.remove('d-none')
+      addBtn.classList.add('d-none')
+    })
+
+    saveBtn.addEventListener('click', (event) => {
+      // const projectNameInput = form.childNodes[1].childNodes[1].childNodes[3].value
+      // const projectNotesInput = form.childNodes[1].childNodes[3].childNodes[3].innerText
+      saveNotes(element.id, element['project-name'], 'still working on the bugs')
+    })
 
     // toggle card
     cardBody.addEventListener('click', (event) => {
@@ -140,9 +159,12 @@ function displayContent() {
       toggleAnimateBtnClass(chatBtn, 'remove')
     });
 
-    deleteBtn.addEventListener('click', () => {
-      deleteIdea(element.id);
+    [deleteBtnInner, deleteBtn].forEach((btn) => {
+      btn.addEventListener('click', () => {
+        deleteIdea(element.id);
+      })
     })
+
 
     deleteBtn.addEventListener('mouseover', () => {
       toggleAnimateBtnClass(deleteBtn, 'add')
@@ -155,6 +177,7 @@ function displayContent() {
 }
 
 function getSpecificChildEl(lookUpClass, parentNode) {
+  // console.log(parentNode)
   let foundElement = null;
   for (let i = 0; i < parentNode.length; i++) {
     if (parentNode[i].className === lookUpClass) {
@@ -259,6 +282,15 @@ addForm.addEventListener('submit', (event) => {
   inputField.value = ''
   displayContent()
 })
+
+function saveNotes(id, updatedName, notes) {
+  const found_Elm_Index_By_Id = content.findIndex(element => element.id === id)
+  const indexedElm = content[found_Elm_Index_By_Id]
+  indexedElm['project-name'] = updatedName
+  indexedElm['project-notes'] = notes
+
+  displayContent()
+}
 
 function deleteIdea(id) {
   const found_Elm_Index_By_Id = content.findIndex(element => element.id === id)
