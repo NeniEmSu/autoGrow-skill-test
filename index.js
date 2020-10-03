@@ -60,12 +60,15 @@ function displayContent() {
       </div>
       <div class="card-block__body-icons d-none d-sm-flex">
         <button class="card-block__body-icon make-btn">
+          <span>Make it Real</span>
           <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
         </button>
         <button class="card-block__body-icon chat-btn">
+          <span>Discuss in chat</span>
           <img src="images/chat-box.svg" alt="chat box icon" width="20" height="20" class="card-block__body-icon-img">
         </button>
         <button class="card-block__body-icon delete-btn">
+          <span>Delete</span>
           <img src="images/close.svg" alt="delete icon" width="20" height="20" class="card-block__body-icon-img">
         </button>
       </div>
@@ -92,17 +95,6 @@ function displayContent() {
     `
     main.appendChild(cardEl);
 
-    function getSpecificChildEl(lookUpClass, parentNode) {
-      let foundElement = null;
-      for (let i = 0; i < parentNode.length; i++) {
-        if (parentNode[i].className === lookUpClass) {
-          foundElement = parentNode[i];
-          break;
-        }
-      }
-      return foundElement;
-    }
-
     // add event listener to toggle panel
     const cardNodes = cardEl.childNodes;
     const cardBody = getSpecificChildEl('card-block__body', cardNodes);
@@ -116,7 +108,7 @@ function displayContent() {
     // toggle card
     cardBody.addEventListener('click', (event) => {
       // excluding all other children in event
-      if (cardBody !== event.target) return;
+      if (event.target !== cardBody && event.target !== cardBody.childNodes[1]) return;
 
       cardEl.classList.toggle('open');
     }, false);
@@ -128,14 +120,56 @@ function displayContent() {
       displayContent();;
     });
 
+    maKeBtn.addEventListener('mouseover', () => {
+      toggleAnimateBtnClass(maKeBtn, 'add')
+    });
+
+    maKeBtn.addEventListener('mouseleave', () => {
+      toggleAnimateBtnClass(maKeBtn, 'remove')
+    });
+
     chatBtn.addEventListener('click', () => {
       alert("Lets chat if you have the time.");
+    });
+
+    chatBtn.addEventListener('mouseover', () => {
+      toggleAnimateBtnClass(chatBtn, 'add')
+    });
+
+    chatBtn.addEventListener('mouseleave', () => {
+      toggleAnimateBtnClass(chatBtn, 'remove')
     });
 
     deleteBtn.addEventListener('click', () => {
       deleteIdea(element.id);
     })
+
+    deleteBtn.addEventListener('mouseover', () => {
+      toggleAnimateBtnClass(deleteBtn, 'add')
+    });
+
+    deleteBtn.addEventListener('mouseleave', () => {
+      toggleAnimateBtnClass(deleteBtn, 'remove')
+    });
   });
+}
+
+function getSpecificChildEl(lookUpClass, parentNode) {
+  let foundElement = null;
+  for (let i = 0; i < parentNode.length; i++) {
+    if (parentNode[i].className === lookUpClass) {
+      foundElement = parentNode[i];
+      break;
+    }
+  }
+  return foundElement;
+}
+
+function toggleAnimateBtnClass(buttonReceivingAction, classListMethod) {
+  setTimeout(function () {
+    if (classListMethod === 'add') buttonReceivingAction.classList.add('animate-btn')
+    else buttonReceivingAction.classList.remove('animate-btn')
+  }, 100);
 }
 
 

@@ -12,7 +12,7 @@
 - [x] Toggle filter html/css
 - [x] toggle filter js func
 - [x] build card layout
-- [x] toggle card pannel
+- [x] toggle card panel
 - [x] mock api call
 - [x] search functionality
 - [x] add idea functionality
