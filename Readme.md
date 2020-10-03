@@ -18,6 +18,7 @@
 - [x] add idea functionality
 - [x] set to made func
 - [x] set element made on hammer button click
+- [x] icon element hover animation
 - [ ] hide notes form conditionally
 - [ ] display summary in made and real cards
 - [ ] display settings in made and real cars
