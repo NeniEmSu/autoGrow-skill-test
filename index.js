@@ -55,24 +55,24 @@ function displayContent() {
       <p class="card-block__body-text project-name">${element['project-name']}</p>
       <div class="collapsible-menu d-flex d-sm-none">
         <button class="collapsible-menu-icon">
-          <img src="images/dot-menu.svg" alt="Make icon" width="20" height="20" class="collapsible-menu-icon-img">
+          <img src="images/dot-menu.svg" alt="subMenu icon" width="20" height="20" class="collapsible-menu-icon-img">
         </button>
       </div>
       <div class="card-block__body-icons d-none d-sm-flex">
-        <button class="card-block__body-icon">
+        <button class="card-block__body-icon make-btn">
           <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
         </button>
-        <button class="card-block__body-icon">
-          <img src="images/chat-box.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+        <button class="card-block__body-icon chat-btn">
+          <img src="images/chat-box.svg" alt="chat box icon" width="20" height="20" class="card-block__body-icon-img">
         </button>
-        <button class="card-block__body-icon">
-          <img src="images/close.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
+        <button class="card-block__body-icon delete-btn">
+          <img src="images/close.svg" alt="delete icon" width="20" height="20" class="card-block__body-icon-img">
         </button>
       </div>
     </div>
     <div class="card-block__panel">
-      <form class="row">
-        <div class="col-md-6">
+      <form class="card-block__panel-form row d-none">
+        <div class="col-12">
           <div class="form-group">
             <label for="name-${element.id}">Project name</label>
             <input type="text" class="form-control" id="name-${element.id}" name="name"
@@ -80,19 +80,60 @@ function displayContent() {
           </div>
           <div class="form-group">
             <label for="notes-${element.id}">Project notes</label>
-            <textarea name="notes" id="notes-${element.id}" class="form-control"></textarea>
+            <textarea name="notes" rows="5" id="notes-${element.id}" class="form-control">${element['project-notes']}</textarea>
           </div>
         </div>
       </form>
-      <button class="save">Save</button>
-      <button class="delete">Delete Idea</button>
+      <button id="add-notes-${element.id}" class="add">Add notes</button>
+      <button id="edit-notes-${element.id}" class="edit d-none">Edit notes</button>
+      <button id="save-notes-${element.id}" class="save d-none">Save</button>
+      <button id="delete-notes-${element.id}" class="delete">Delete Idea</button>
     </div>
     `
     main.appendChild(cardEl);
 
+    function getSpecificChildEl(lookUpClass, parentNode) {
+      let foundElement = null;
+      for (let i = 0; i < parentNode.length; i++) {
+        if (parentNode[i].className === lookUpClass) {
+          foundElement = parentNode[i];
+          break;
+        }
+      }
+      return foundElement;
+    }
+
     // add event listener to toggle panel
-    cardEl.addEventListener('click', () => {
-      cardEl.classList.toggle('open')
+    const cardNodes = cardEl.childNodes;
+    const cardBody = getSpecificChildEl('card-block__body', cardNodes);
+
+    // finding buttons within nested child elements
+    const maKeBtn = cardBody.childNodes[5].childNodes[1];
+    const chatBtn = cardBody.childNodes[5].childNodes[3];
+    const deleteBtn = cardBody.childNodes[5].childNodes[5];
+
+
+    // toggle card
+    cardBody.addEventListener('click', (event) => {
+      // excluding all other children in event
+      if (cardBody !== event.target) return;
+
+      cardEl.classList.toggle('open');
+    }, false);
+
+    // set element as made
+    maKeBtn.addEventListener('click', () => {
+      element.status = 'made';
+      element.progress = 10;
+      displayContent();;
+    });
+
+    chatBtn.addEventListener('click', () => {
+      alert("Lets chat if you have the time.");
+    });
+
+    deleteBtn.addEventListener('click', () => {
+      deleteIdea(element.id);
     })
   });
 }
@@ -184,3 +225,9 @@ addForm.addEventListener('submit', (event) => {
   inputField.value = ''
   displayContent()
 })
+
+function deleteIdea(id) {
+  const found_Elm_Index_By_Id = content.findIndex(element => element.id === id)
+  content.splice(found_Elm_Index_By_Id, 1)
+  displayContent()
+}

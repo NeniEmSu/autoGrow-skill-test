@@ -434,9 +434,19 @@ main {
       }
     }
 
+    &.made {
+      .make-btn {
+        display: none;
+      }
+    }
+
     &.real {
       .complete {
         display: flex;
+      }
+
+      .make-btn {
+        display: none;
       }
     }
 
@@ -467,6 +477,7 @@ main {
       padding: 30px 40px;
       background: #f3f3f3;
       border-radius: 10px;
+      cursor: pointer;
 
       @media (max-width: 768px) {
         align-items: flex-start;

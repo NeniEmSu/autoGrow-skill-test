@@ -420,8 +420,14 @@ main .card-block .complete .tick {
     height: 20px;
   }
 }
+main .card-block.made .make-btn {
+  display: none;
+}
 main .card-block.real .complete {
   display: flex;
+}
+main .card-block.real .make-btn {
+  display: none;
 }
 main .card-block__head {
   display: none;
@@ -447,6 +453,7 @@ main .card-block__body {
   padding: 30px 40px;
   background: #f3f3f3;
   border-radius: 10px;
+  cursor: pointer;
 }
 @media (max-width: 768px) {
   main .card-block__body {
