@@ -9,28 +9,9 @@ function toggleSidebar() {
   $("#sidebar").toggleClass("closed");
 }
 
-$(document).ready(function () {
-  $(".form-control").each(function () {
-    if ($(this).val() !== "") {
-      $(this).parent().addClass("label-animate");
-    }
-  });
-  $(".form-control").click(function () {
-    $(this).parent().addClass("label-animate");
-  });
-  $(window).click(function (event) {
-    if (!$(event.target).is(".form-control")) {
-      $(".form-control").each(function () {
-        if ($(this).val() == "") {
-          $(this).parent().removeClass("label-animate");
-        }
-      });
-    }
-  });
-});
-displayContent();
+setupCards();
 
-function displayContent() {
+function setupCards() {
   // clear main to reset for adding new element
   main.innerHTML = ''; // create cards
 
@@ -38,8 +19,25 @@ function displayContent() {
     var cardEl = document.createElement("article");
     cardEl.classList.add("card-block", element.status);
     if (element.status !== 'idea') cardEl.classList.add("in-progress");
-    cardEl.innerHTML = "\n    <div class=\"card-block__head\">\n      <div class=\"progress\">\n        <div class=\"progress-bar\" role=\"progressbar\" style=\"width: ".concat(element.progress, "%;\" aria-valuenow=\"").concat(element.progress, "\" aria-valuemin=\"0\"\n          aria-valuemax=\"100\">").concat(element.progress, "%</div>\n      </div>\n    </div>\n    <div class='complete'><span class=\"tick\"></span></div>\n    <div class=\"card-block__body\">\n      <p class=\"card-block__body-text project-name\">").concat(element['project-name'], "</p>\n      <div class=\"collapsible-menu d-flex d-sm-none\">\n        <button class=\"collapsible-menu-icon\">\n          <img src=\"images/dot-menu.svg\" alt=\"subMenu icon\" width=\"20\" height=\"20\" class=\"collapsible-menu-icon-img\">\n        </button>\n      </div>\n      <div class=\"card-block__body-icons d-none d-sm-flex\">\n        <button class=\"card-block__body-icon make-btn\">\n          <span>Make it Real</span>\n          <img src=\"images/hammer.svg\" alt=\"Make icon\" width=\"20\" height=\"20\" class=\"card-block__body-icon-img\">\n        </button>\n        <button class=\"card-block__body-icon chat-btn\">\n          <span>Discuss in chat</span>\n          <img src=\"images/chat-box.svg\" alt=\"chat box icon\" width=\"20\" height=\"20\" class=\"card-block__body-icon-img\">\n        </button>\n        <button class=\"card-block__body-icon delete-btn\">\n          <span>Delete</span>\n          <img src=\"images/close.svg\" alt=\"delete icon\" width=\"20\" height=\"20\" class=\"card-block__body-icon-img\">\n        </button>\n      </div>\n    </div>\n    <div class=\"card-block__panel\">\n      <form class=\"card-block__panel-form row d-none\">\n        <div class=\"col-12\">\n          <div class=\"form-group\">\n            <label for=\"name-").concat(element.id, "\">Project name</label>\n            <input type=\"text\" class=\"form-control\" id=\"name-").concat(element.id, "\" name=\"name\"\n              value=\"").concat(element['project-name'], "\">\n          </div>\n          <div class=\"form-group\">\n            <label for=\"notes-").concat(element.id, "\">Project notes</label>\n            <textarea name=\"notes\" rows=\"5\" id=\"notes-").concat(element.id, "\" class=\"form-control\">").concat(element['project-notes'], "</textarea>\n          </div>\n        </div>\n      </form>\n      <div class=\"").concat(element['project-notes'] === '' ? 'd-none' : '', "\">\n        <p>").concat(element['project-notes'], "</p>\n      </div>\n      <button name='add-notes' id=\"add-notes-").concat(element.id, "\" class=\"add ").concat(element['project-notes'] === '' ? '' : 'd-none', "\">Add notes</button>\n      <button name='edit-notes' id=\"edit-notes-").concat(element.id, "\" class=\"edit ").concat(element['project-notes'] === '' ? 'd-none' : '', "\">Edit notes</button>\n      <button name='save-notes' type=\"submit\" id=\"save-notes-").concat(element.id, "\" class=\"save d-none\">Save</button>\n      <button name='delete-notes' id=\"delete-notes-").concat(element.id, "\" class=\"delete\">Delete Idea</button>\n    </div>\n    ");
-    main.appendChild(cardEl); // add event listener to toggle panel
+    cardEl.innerHTML = "\n    <div class=\"card-block__head\">\n      <div class=\"progress\">\n        <div class=\"progress-bar\" role=\"progressbar\" style=\"width: ".concat(element.progress, "%;\" aria-valuenow=\"").concat(element.progress, "\" aria-valuemin=\"0\"\n          aria-valuemax=\"100\">").concat(element.progress, "%</div>\n      </div>\n    </div>\n    <div class='complete'><span class=\"tick\"></span></div>\n    <div class=\"card-block__body\">\n      <p class=\"card-block__body-text project-name\">").concat(element['project-name'], "</p>\n      <div class=\"collapsible-menu d-flex d-sm-none\">\n        <button class=\"collapsible-menu-icon\">\n          <img src=\"images/dot-menu.svg\" alt=\"subMenu icon\" width=\"20\" height=\"20\" class=\"collapsible-menu-icon-img\">\n        </button>\n      </div>\n      <div class=\"card-block__body-icons d-none d-sm-flex\">\n        <button class=\"card-block__body-icon make-btn\">\n          <span>Make&nbsp;it&nbsp;Real</span>\n          <img src=\"images/hammer.svg\" alt=\"Make icon\" width=\"20\" height=\"20\" class=\"card-block__body-icon-img\">\n        </button>\n        <button class=\"card-block__body-icon chat-btn\">\n          <span>Discuss&nbsp;in&nbsp;chat</span>\n          <img src=\"images/chat-box.svg\" alt=\"chat box icon\" width=\"20\" height=\"20\" class=\"card-block__body-icon-img\">\n        </button>\n        <button class=\"card-block__body-icon delete-btn\">\n          <span>Delete</span>\n          <img src=\"images/close.svg\" alt=\"delete icon\" width=\"20\" height=\"20\" class=\"card-block__body-icon-img\">\n        </button>\n      </div>\n    </div>\n    <div class=\"card-block__panel\">\n      <form class=\"card-block__panel-form row d-none\">\n        <div class=\"col-12\">\n          <div class=\"form-group\">\n            <label for=\"name-").concat(element.id, "\">Project name</label>\n            <input type=\"text\" class=\"form-control\" id=\"name-").concat(element.id, "\" name=\"name\"\n              value=\"").concat(element['project-name'], "\">\n          </div>\n          <div class=\"form-group\">\n            <label for=\"notes-").concat(element.id, "\">Project notes</label>\n            <textarea name=\"notes\" rows=\"5\" id=\"notes-").concat(element.id, "\" class=\"form-control\">").concat(element['project-notes'], "</textarea>\n          </div>\n        </div>\n      </form>\n      <div class=\"").concat(element['project-notes'] === '' ? 'd-none' : '', "\">\n        <p>").concat(element['project-notes'], "</p>\n      </div>\n      <button name='add-notes' id=\"add-notes-").concat(element.id, "\" class=\"add ").concat(element['project-notes'] === '' ? '' : 'd-none', "\">Add notes</button>\n      <button name='edit-notes' id=\"edit-notes-").concat(element.id, "\" class=\"edit ").concat(element['project-notes'] === '' ? 'd-none' : '', "\">Edit notes</button>\n      <button name='save-notes' type=\"submit\" id=\"save-notes-").concat(element.id, "\" class=\"save d-none\">Save</button>\n      <button name='delete-notes' id=\"delete-notes-").concat(element.id, "\" class=\"delete\">Delete Idea</button>\n    </div>\n    ");
+    main.appendChild(cardEl);
+    $(".form-control").each(function () {
+      if ($(this).val() !== "") {
+        $(this).parent().addClass("label-animate");
+      }
+    });
+    $(".form-control").click(function () {
+      $(this).parent().addClass("label-animate");
+    });
+    $(window).click(function (event) {
+      if (!$(event.target).is(".form-control")) {
+        $(".form-control").each(function () {
+          if ($(this).val() == "") {
+            $(this).parent().removeClass("label-animate");
+          }
+        });
+      }
+    }); // add event listener to toggle panel
 
     var cardNodes = cardEl.childNodes;
     var cardBody = getSpecificChildEl('card-block__body', cardNodes); // finding buttons within nested child elements
@@ -71,7 +69,7 @@ function displayContent() {
     maKeBtn.addEventListener('click', function () {
       element.status = 'made';
       element.progress = 10;
-      displayContent();
+      setupCards();
       ;
     });
     maKeBtn.addEventListener('mouseover', function () {
@@ -172,7 +170,7 @@ addForm.addEventListener('submit', function (event) {
   };
   content.unshift(idea);
   inputField.value = '';
-  displayContent();
+  setupCards();
 });
 
 function saveNotes(id, updatedName, notes) {
@@ -182,7 +180,7 @@ function saveNotes(id, updatedName, notes) {
   var indexedElm = content[found_Elm_Index_By_Id];
   indexedElm['project-name'] = updatedName;
   indexedElm['project-notes'] = notes;
-  displayContent();
+  setupCards();
 }
 
 function deleteIdea(id) {
@@ -190,5 +188,5 @@ function deleteIdea(id) {
     return element.id === id;
   });
   content.splice(found_Elm_Index_By_Id, 1);
-  displayContent();
+  setupCards();
 }

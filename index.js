@@ -7,34 +7,9 @@ function toggleSidebar() {
   $("#sidebar").toggleClass("closed");
 }
 
+setupCards();
 
-$(document).ready(function () {
-  $(".form-control").each(function () {
-    if ($(this).val() !== "") {
-      $(this).parent().addClass("label-animate");
-    }
-  });
-
-  $(".form-control").click(function () {
-    $(this).parent().addClass("label-animate");
-  });
-
-  $(window).click(function (event) {
-    if (!$(event.target).is(".form-control")) {
-      $(".form-control").each(function () {
-        if ($(this).val() == "") {
-          $(this).parent().removeClass("label-animate");
-        }
-      });
-    }
-  });
-
-});
-
-
-displayContent();
-
-function displayContent() {
+function setupCards() {
   // clear main to reset for adding new element
   main.innerHTML = ''
 
@@ -61,11 +36,11 @@ function displayContent() {
       </div>
       <div class="card-block__body-icons d-none d-sm-flex">
         <button class="card-block__body-icon make-btn">
-          <span>Make it Real</span>
+          <span>Make&nbsp;it&nbsp;Real</span>
           <img src="images/hammer.svg" alt="Make icon" width="20" height="20" class="card-block__body-icon-img">
         </button>
         <button class="card-block__body-icon chat-btn">
-          <span>Discuss in chat</span>
+          <span>Discuss&nbsp;in&nbsp;chat</span>
           <img src="images/chat-box.svg" alt="chat box icon" width="20" height="20" class="card-block__body-icon-img">
         </button>
         <button class="card-block__body-icon delete-btn">
@@ -98,6 +73,27 @@ function displayContent() {
     </div>
     `
     main.appendChild(cardEl);
+
+    $(".form-control").each(function () {
+      if ($(this).val() !== "") {
+        $(this).parent().addClass("label-animate");
+      }
+    });
+
+    $(".form-control").click(function () {
+      $(this).parent().addClass("label-animate");
+    });
+
+    $(window).click(function (event) {
+      if (!$(event.target).is(".form-control")) {
+        $(".form-control").each(function () {
+          if ($(this).val() == "") {
+            $(this).parent().removeClass("label-animate");
+          }
+        });
+      }
+    });
+
 
     // add event listener to toggle panel
     const cardNodes = cardEl.childNodes;
@@ -137,7 +133,7 @@ function displayContent() {
     maKeBtn.addEventListener('click', () => {
       element.status = 'made';
       element.progress = 10;
-      displayContent();;
+      setupCards();;
     });
 
     maKeBtn.addEventListener('mouseover', () => {
@@ -281,7 +277,7 @@ addForm.addEventListener('submit', (event) => {
   }
   content.unshift(idea)
   inputField.value = ''
-  displayContent()
+  setupCards()
 })
 
 function saveNotes(id, updatedName, notes) {
@@ -290,11 +286,11 @@ function saveNotes(id, updatedName, notes) {
   indexedElm['project-name'] = updatedName
   indexedElm['project-notes'] = notes
 
-  displayContent()
+  setupCards()
 }
 
 function deleteIdea(id) {
   const found_Elm_Index_By_Id = content.findIndex(element => element.id === id)
   content.splice(found_Elm_Index_By_Id, 1)
-  displayContent()
+  setupCards()
 }
